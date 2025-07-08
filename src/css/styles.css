@@ -1,0 +1,232 @@
+:root {
+  --LimeGreen: hsl(163, 72%, 41%);
+  --BrightRed: hsl(356, 69%, 56%);
+  --Facebook: hsl(208, 92%, 53%);
+  --Twitter: hsl(203, 89%, 53%);
+  --Instagram: linear-gradient(90deg,rgba(252, 176, 69, 1) 28%, rgba(222, 82, 203, 1) 72%);
+  --YouTube: hsl(348, 97%, 39%);
+  /*Light Mode*/
+  --Toggle: hsl(230, 22%, 74%);
+  --BG: hsl(0, 0%, 100%);
+  --VeryPaleBlue: hsl(225, 100%, 98%);
+  --CardBG: hsl(227, 47%, 96%);
+  --CardBGHover: hsl(227, 47%, 90%);
+  --Text1: hsl(228, 12%, 44%);
+  --Text2: hsl(230, 17%, 14%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body.darkmode {
+  --Toggle: linear-gradient(90deg,hsl(210, 78%, 56%) 28%, hsl(146, 68%, 55%) 50%);
+  --BG: hsl(230, 17%, 14%);
+  --VeryDarkBlue: hsl(232, 19%, 15%);
+  --CardBG: hsl(228, 28%, 20%);
+  --CardBGHover: hsl(228, 28%, 26%);
+  --Text1: hsl(228, 34%, 66%);
+  --Text2: hsl(0, 0%, 100%);
+}
+
+body {
+  background-color: var(--BG);
+  color: var(--Text2);
+  transition: background-color 0.5s, color 0.5s;
+}
+
+.color__green {
+  color: var(--LimeGreen);
+}
+
+.color__red {
+  color: var(--BrightRed);
+}
+.dashboard {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+ul{
+  list-style: none;
+}
+
+.header {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.content__toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.toggle {
+  width: 60px;
+  height: 30px;
+  background: var(--Toggle);
+  border-radius: 2rem;
+  position: relative;
+}
+.ball {
+  background-color: var(--BG);
+  height: 23px;
+  width: 23px;
+  border-radius: 50%;
+  cursor: pointer;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+
+  transition: left 0.5s;
+}
+
+.ball-move {
+  left: 31px;
+}
+
+.month {
+  position: relative;
+}
+
+.month h4 {
+  display: inline;
+  cursor: pointer;
+}
+
+.months {
+  position: absolute;
+  top: 99%;
+  background-color: var(--CardBG);
+  z-index: 1000;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0.5rem 1rem rgba(0,0,0,0.15);
+  display: none;
+}
+
+.month h4:hover + .months,
+.months:hover {
+  display: block;
+}
+
+.month-items:hover {
+  cursor: pointer;
+  color: var(--Text1);
+}
+
+.overviews,
+.followers {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+.follower {
+  background-color: var(--CardBG);
+  padding: 2rem;
+  border-radius: 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.5s, transform 0.5s;
+  cursor: pointer;
+}
+
+.follower:hover {
+  background-color: var(--CardBGHover);
+  transform: translateY(-10px);
+}
+
+.follower__head {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  color: var(--Text1);
+  font-weight: bold;
+}
+.followers__total p:nth-child(1) {
+  font-size: 3.1rem;
+  font-weight: 700;
+}
+.followers__total p:nth-child(2) {
+  margin-top: 0.5rem;
+  letter-spacing: 3px;
+  color: var(--Text1);
+}
+.follower__today {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: bold;
+}
+.follower::before {
+  content: "";
+  height: 5px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.follower:nth-child(1)::before {
+  background-color: var(--Facebook);
+}
+
+.follower:nth-child(2)::before {
+  background-color: var(--Twitter);
+}
+
+.follower:nth-child(3)::before {
+  background: var(--Instagram);
+}
+
+.follower:nth-child(4)::before {
+  background-color: var(--YouTube);
+}
+
+.container__overview h2{
+  margin: 2rem 0;
+}
+.overview {
+  background-color: var(--CardBG);
+  padding: 2rem;
+  border-radius: 1rem;
+  display: grid;
+  gap: 3rem;
+  transition: background-color 0.5s, transform 0.5s;
+  cursor: pointer;
+}
+.overview:hover {
+  background-color: var(--CardBGHover);
+  transform: translateY(-10px);
+}
+
+.overview__top,
+.overview__buttom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.overview__top p {
+  color: var(--Text1);
+  font-weight: bold;
+}
+.overview__buttom > p {
+  font-size: 3rem;
+  font-weight: bold;
+}
+.overview__buttom-percent {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
